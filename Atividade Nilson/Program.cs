@@ -1,9 +1,11 @@
 using Atividade_Nilson.Repositorio;
 using Atividade_Nilson.Repositorio.Contrato;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IEnderecoRepositorio, EnderecoRepositorio>();
 

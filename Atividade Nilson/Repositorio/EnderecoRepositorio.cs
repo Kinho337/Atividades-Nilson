@@ -10,7 +10,12 @@ namespace Atividade_Nilson.Repositorio
 
         public EnderecoRepositorio(IConfiguration configuracao)
         {
-            _conexaoMySQL = configuracao.GetConnectionString("DefaultConnection")!;
+            _conexaoMySQL = configuracao.GetConnectionString("ConexaoMySql")!;
+
+            if (string.IsNullOrWhiteSpace(_conexaoMySQL))
+            {
+                throw new Exception("A connection string 'ConexaoMySql' não foi encontrada no appsettings.json.");
+            }
         }
 
         public void Cadastrar(Endereco endereco)

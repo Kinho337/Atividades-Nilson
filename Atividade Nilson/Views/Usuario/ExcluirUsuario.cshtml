@@ -1,0 +1,44 @@
+﻿@model Atividade_Nilson.Models.Usuario
+
+@{
+    ViewData["Title"] = "Excluir Usuário";
+}
+
+<h2 class="mb-4">Excluir Usuário</h2>
+
+<div class="alert alert-danger">
+    Tem certeza que deseja excluir este usuário?
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Código</dt>
+            <dd class="col-sm-9">@Model.IdUsu</dd>
+
+            <dt class="col-sm-3">Nome</dt>
+            <dd class="col-sm-9">@Model.nomeUsu</dd>
+
+            <dt class="col-sm-3">Cargo</dt>
+            <dd class="col-sm-9">@Model.Cargo</dd>
+
+            <dt class="col-sm-3">CEP</dt>
+            <dd class="col-sm-9">@Model.CEP</dd>
+
+            <dt class="col-sm-3">Cidade</dt>
+            <dd class="col-sm-9">@Model.Cidade</dd>
+
+            <dt class="col-sm-3">Logradouro</dt>
+            <dd class="col-sm-9">@Model.Logradouro</dd>
+
+            <dt class="col-sm-3">Número</dt>
+            <dd class="col-sm-9">@Model.Numero</dd>
+        </dl>
+    </div>
+</div>
+
+<form asp-action="ExcluirUsuario" method="post">
+    <input asp-for="IdUsu" type="hidden" name="id" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a asp-controller="Usuario" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

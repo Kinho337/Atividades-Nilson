@@ -36,6 +36,53 @@ namespace Atividade_Nilson.Controllers
             }
 
             return View(endereco);
+
+
+
+        }
+
+
+        [HttpGet]
+        public IActionResult Editar(int id)
+        {
+            var endereco = _enderecoRepositorio.ObterEndereco(id);
+
+            if (endereco == null)
+                return NotFound();
+
+            return View(endereco);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Editar(Endereco endereco)
+        {
+            if (ModelState.IsValid)
+            {
+                _enderecoRepositorio.Atualizar(endereco);
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(endereco);
+        }
+
+        [HttpGet]
+        public IActionResult Excluir(int id)
+        {
+            var endereco = _enderecoRepositorio.ObterEndereco(id);
+
+            if (endereco == null)
+                return NotFound();
+
+            return View(endereco);
+        }
+
+        [HttpPost, ActionName("Excluir")]
+        [ValidateAntiForgeryToken]
+        public IActionResult ExcluirConfirmado(int id)
+        {
+            _enderecoRepositorio.Excluir(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
