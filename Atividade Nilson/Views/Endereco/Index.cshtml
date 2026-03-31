@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Atividade_Nilson.Models.Endereco>
+
+@{
+    ViewData["Title"] = "Endereços Cadastrados";
+}
+
+<h2 class="mb-4">Endereços Cadastrados</h2>
+
+<p>
+    <a asp-controller="Endereco" asp-action="Cadastrar" class="btn btn-success">
+        Novo Endereço
+    </a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>CEP</th>
+            <th>Estado</th>
+            <th>Cidade</th>
+            <th>Bairro</th>
+            <th>Logradouro</th>
+            <th>Complemento</th>
+            <th>Número</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var endereco in Model)
+        {
+            <tr>
+                <td>@endereco.Id</td>
+                <td>@endereco.CEP</td>
+                <td>@endereco.Estado</td>
+                <td>@endereco.Cidade</td>
+                <td>@endereco.Bairro</td>
+                <td>@endereco.Logradouro</td>
+                <td>@endereco.Complemento</td>
+                <td>@endereco.Numero</td>
+            </tr>
+        }
+    </tbody>
+</table>
